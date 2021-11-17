@@ -1,0 +1,38 @@
+.bodyStartPage {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .headerLogoImg {
+    margin: 0 auto;
+  }
+  
+  .headerLogo {
+    margin-top: 100px;
+  }
+  .mainStartPage {
+    margin-top: 100px;
+  }
+  
+  .quizChoice {
+    display: flex;
+  }
+  
+  .settings {
+    display: flex;
+    align-items: center;
+    width: 150px;
+    background-color: var(--vinous);
+  }
+  
+  .footerStartPage {
+    margin-top: 114px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 63px;
+  }
+  .settings p {
+    padding-left: 5px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--white);
+    font-size: 18px;
+  }

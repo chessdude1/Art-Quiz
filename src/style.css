@@ -1,0 +1,16 @@
+:root {
+  --black-color: #030303;
+  --white: #ffffff;
+  --vinous: #660033;
+  --blue: #c0cffa;
+}
+
+body {
+  background-color: var(--blue);
+  margin: 0 auto;
+}
+
+/* test style */
+
+
+
