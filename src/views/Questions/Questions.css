@@ -1,45 +1,121 @@
 .QuestionHead {
-    font-family: "Montserrat", sans-serif;
-    color: var(--vinous);
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    margin-top: 25px;
-  }
-  
-  .QuestionWrapper {
-    margin-top: 32px;
-  
-  }
-  
-  .QuestionPicture {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .QuestionPicture__Answers {
-    display: grid;
-    grid-template-rows: 0.2fr 0.2fr;
-    grid-template-columns: 0.2fr 0.2fr;
-    gap: 5px;
-    justify-content: center;
-    margin-top: 40px;
-  }
-  
-  .QuestionPicture__Answer_right {
-    text-align: right;
-    background-color: var(--white);
-    font-family: "Montserrat", sans-serif;
-    color: var(--vinous);
-    font-size: 24px;
-    padding-right: 25px;
-  }
-  
-  .QuestionPicture__Answer_left {
-    text-align: left;
-    background-color: var(--white);
-    color: var(--vinous);
-    font-size: 24px;
-    font-family: "Montserrat", sans-serif;
-    padding-left: 25px;
-  }
+  font-family: "Montserrat", sans-serif;
+  color: var(--vinous);
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.QuestionWrapper {
+  margin-top: 32px;
+}
+
+.QuestionPicture {
+  display: flex;
+  justify-content: center;
+}
+
+.QuestionPicture__Answers {
+  display: grid;
+  grid-template-rows: 0.3fr 0.3fr;
+  grid-template-columns: 0.3fr 0.3fr;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.QuestionPicture__Answer_right {
+  text-align: right;
+  background-color: var(--white);
+  font-family: "Montserrat", sans-serif;
+  color: var(--vinous);
+  font-size: 24px;
+  padding-right: 25px;
+}
+
+.QuestionPicture__Answer_left {
+  text-align: left;
+  background-color: var(--white);
+  color: var(--vinous);
+  font-size: 24px;
+  font-family: "Montserrat", sans-serif;
+  padding-left: 25px;
+  align-content: center;
+}
+
+.QuestionPicture__correctAnswer {
+  background-color: rgb(37, 158, 26);
+}
+
+.QuestionPicture__wrongAnswer {
+  background-color: rgb(180, 74, 42);
+}
+
+/* ModalWindow */
+
+.bodyModalWindow {
+  visibility: hidden;
+  width: 100%;
+  height: 3000px;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.ModalWindowContainer {
+  margin: 30px auto 0px auto;
+  width: 582px;
+  height: 850px;
+  padding: 10px;
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #000;
+  text-align: center;
+}
+
+.ModalWindowCorrect {
+  border: 3px solid green;
+}
+
+.ModalWindowResult {
+  display: flex;
+  justify-content: center;
+}
+
+.ModalWindowResult__Correct {
+  visibility: hidden;
+}
+
+.ModalWindowResult__Wrong {
+  visibility: hidden;
+}
+
+.ModalWindow__PictureTitle {
+  margin-top: 20px;
+  color: var(--vinous);
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+}
+
+.ModalWindow__PictureArtist {
+  margin-bottom: 35px;
+  margin-top: 25px;
+  color: var(--vinous);
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+}
+.ModalWindowResult__Show {
+  visibility: unset;
+}
+
+.ModalWindow__NextBtn {
+  margin-top: 35px;
+  color: var(--white);
+  margin: 0 auto;
+  background-color: var(--vinous);
+  width: 150px;
+  height: 50px;
+}

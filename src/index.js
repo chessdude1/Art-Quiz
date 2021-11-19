@@ -14,7 +14,7 @@ export const router = () => {
     "#/StartPage/": startPageContent,
     "#/Categories": categoriesContent,
     "#/Question/": questionsContent,
-    "#/Question/?": `123`,
+    "#/Question/?": questionsContent,
   };
   const main = document.querySelector(".container");
   let request = Utils.parseRequestURL();
