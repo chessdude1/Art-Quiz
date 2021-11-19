@@ -1,0 +1,45 @@
+.QuestionHead {
+    font-family: "Montserrat", sans-serif;
+    color: var(--vinous);
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  }
+  
+  .QuestionWrapper {
+    margin-top: 32px;
+  
+  }
+  
+  .QuestionPicture {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .QuestionPicture__Answers {
+    display: grid;
+    grid-template-rows: 0.2fr 0.2fr;
+    grid-template-columns: 0.2fr 0.2fr;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  .QuestionPicture__Answer_right {
+    text-align: right;
+    background-color: var(--white);
+    font-family: "Montserrat", sans-serif;
+    color: var(--vinous);
+    font-size: 24px;
+    padding-right: 25px;
+  }
+  
+  .QuestionPicture__Answer_left {
+    text-align: left;
+    background-color: var(--white);
+    color: var(--vinous);
+    font-size: 24px;
+    font-family: "Montserrat", sans-serif;
+    padding-left: 25px;
+  }

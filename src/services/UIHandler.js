@@ -1,12 +1,12 @@
-import {artistQuizHandler} from '../views/StartPage/StartPage'
+import { artistQuizHandler } from "../views/StartPage/StartPage";
+import { getCategoryNumber } from "../views/Questions/Questions";
+import { categoryHandler } from "../views/Categories/Categories";
 
-let full = document.querySelector(".body");
+export let full = document.querySelector(".body");
 
 full.addEventListener("click", (e) => {
   e.preventDefault();
-
-  artistQuizHandler(e.target)
-
+  artistQuizHandler(e.target);
+  getCategoryNumber(e.target);
+  categoryHandler(e.target);
 });
-
-export let puck = "puck";

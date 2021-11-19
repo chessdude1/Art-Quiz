@@ -1,0 +1,79 @@
+.CategoriesHeader__HomeBtn p {
+  padding-left: 10px;
+  font-family: "Montserrat", sans-serif;
+  color: var(--white);
+  font-size: 18px;
+}
+
+.CategoriesHeader__HomeBtn {
+  display: flex;
+  align-items: center;
+  width: 150px;
+  background-color: var(--vinous);
+  padding: 4px;
+}
+
+.CategoriesHeader__Header {
+  font-family: "Montserrat", sans-serif;
+  font-size: 36px;
+  color: var(--vinous);
+}
+
+.CategoriesHeader__ScoreBtn {
+  display: flex;
+  align-items: center;
+  width: 150px;
+  background-color: var(--vinous);
+  padding: 4px;
+}
+
+.CategoriesHeader__ScoreBtn p {
+  padding-left: 10px;
+  font-family: "Montserrat", sans-serif;
+  color: var(--white);
+  font-size: 18px;
+}
+
+.CategoriesHeader {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CategoriesCard {
+  max-width: 184px;
+  height: 300px;
+  background-color: var(--white);
+  margin-right: 15px;
+  margin-bottom: 30px;
+}
+
+.CategoriesCard {
+  font-family: "Montserrat", sans-serif;
+  color: var(--vinous);
+}
+.CategoriesCard p {
+  padding-left: 10px;
+}
+.CategoriesCard__Number {
+  font-size: 72px;
+  font-weight: 900;
+}
+
+.CategoriesCard__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 95%;
+}
+
+.CategoriesContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.CategoriesCardDisabled {
+  /* background-color: #00000013; */
+  color: #00000013;
+}

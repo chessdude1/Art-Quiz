@@ -10,7 +10,10 @@ body {
   margin: 0 auto;
 }
 
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 /* test style */
-
-
 

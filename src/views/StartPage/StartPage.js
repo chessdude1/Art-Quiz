@@ -26,12 +26,13 @@ class StartPage {
   }
 }
 
+
 let startPage = new StartPage();
 
 export let startPageContent = startPage.render();
+
 export function artistQuizHandler(elem) {
-  // console.log(e.classList.contains());
   if (elem.classList.contains("quizChoiceArtistsBtn")) {
-    console.log("ArtistsClick");
+    window.location = "/#/Categories";
   }
 }
