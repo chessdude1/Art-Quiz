@@ -31,8 +31,9 @@ let startPage = new StartPage();
 
 export let startPageContent = startPage.render();
 
-export function artistQuizHandler(elem) {
-  if (elem.classList.contains("quizChoiceArtistsBtn")) {
-    window.location = "/#/Categories";
+
+export function homeBtnHandler(elem) {
+  if (elem.closest(".HomeBtn")) {
+    window.location = "/#/StartPage/";
   }
 }

@@ -1,6 +1,7 @@
 import { images } from "../../../image-data/images";
 import questionsStyles from "./Questions.css";
-
+import { arrOfResolvedCards } from "../Score/Score";
+import { PicturesStore } from "../Categories/Categories";
 class Questions {
   constructor(numberOfCategory) {
     this.correctQuestionCounter = 0;
@@ -28,16 +29,21 @@ class Questions {
   }
 
   endCategoryHandler() {
+    let correctQuestion = this.correctQuestionCounter;
+    PicturesStore[this.numberOfCategory][2] = true;
+    PicturesStore[this.numberOfCategory - 1][1] = this.correctQuestionCounter; //устанавливаем для следующей карточки флаг, делающий ее цветной и записываем количество правильных ответов
+    this.questionsCounter = 0; //обнуление счетчиков
+    this.correctQuestionCounter = 0;
     return `        <div class="bodyModalWindowEndCategory">
     <div class="ModalWindowEndCategoryContainer ">
         <p class="EndCategory__Congratulations">
             CONGRATULATIONS
         </p>
-        <p class="EndCategory__Result">${this.correctQuestionCounter} / 10</p>
+        <p class="EndCategory__Result">${correctQuestion} / 10</p>
 
         <img src="./images/ModalWindowEnd/Congratulations.svg">
         <div class="EndCategory_Controls">
-            <button class="ModalWindowEndBtn ModalWindowEndBtn__NextBtn">HOME</button>
+            <button class="ModalWindowEndBtn ModalWindowEndBtn__NextBtn HomeBtn">HOME</button>
             <button class="ModalWindowEndBtn ModalWindowEndBtn__Home">NEXT QUIZ</button>
         </div>
     </div>
@@ -137,6 +143,12 @@ export function checkCorrectPictureAnswer(elem) {
   if (elem.classList.contains("QuestionPictureCorrect")) {
     elem.classList.add("QuestionPicture__correctAnswer");
     questions.correctQuestionCounter++;
+    console.log(
+      (questions.numberOfCategory - 1) * 10 + questions.questionsCounter
+    );
+    arrOfResolvedCards.push(
+      (questions.numberOfCategory - 1) * 10 + questions.questionsCounter
+    );
     setTimeout(() => {
       document
         .querySelector(".ModalWindowResult__Correct")

@@ -51,7 +51,6 @@
   color: var(--vinous);
 }
 
-
 .CategoriesCard p {
   padding-left: 10px;
 }
@@ -76,4 +75,8 @@
 .CategoriesCardDisabled {
   /* background-color: #00000013; */
   color: #00000013;
+}
+
+.Img_CategoriesCardDisabled {
+  filter: grayscale(100%);
 }
