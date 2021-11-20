@@ -47,12 +47,11 @@
   background-color: var(--white);
   margin-right: 15px;
   margin-bottom: 30px;
-}
-
-.CategoriesCard {
   font-family: "Montserrat", sans-serif;
   color: var(--vinous);
 }
+
+
 .CategoriesCard p {
   padding-left: 10px;
 }
@@ -69,6 +68,7 @@
 }
 
 .CategoriesContainer {
+  margin-top: 21px;
   display: flex;
   flex-wrap: wrap;
 }

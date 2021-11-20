@@ -27,6 +27,23 @@ class Questions {
     });
   }
 
+  endCategoryHandler() {
+    return `        <div class="bodyModalWindowEndCategory">
+    <div class="ModalWindowEndCategoryContainer ">
+        <p class="EndCategory__Congratulations">
+            CONGRATULATIONS
+        </p>
+        <p class="EndCategory__Result">${this.correctQuestionCounter} / 10</p>
+
+        <img src="./images/ModalWindowEnd/Congratulations.svg">
+        <div class="EndCategory_Controls">
+            <button class="ModalWindowEndBtn ModalWindowEndBtn__NextBtn">HOME</button>
+            <button class="ModalWindowEndBtn ModalWindowEndBtn__Home">NEXT QUIZ</button>
+        </div>
+    </div>
+
+</div>`;
+  }
   createQuestions() {
     let questionFragment = []; // буфер в который мы складываем сгенерированную разметку вопросов
     for (
@@ -88,7 +105,12 @@ class Questions {
   }
   render() {
     this.createQuestions();
-    return this.questionsState[this.questionsCounter];
+    if (this.questionsCounter == 10) {
+      //прошли последнюю карточку
+      return this.endCategoryHandler();
+    } else {
+      return this.questionsState[this.questionsCounter];
+    }
   }
 }
 
