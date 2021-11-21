@@ -44,11 +44,11 @@
   align-content: center;
 }
 
-.QuestionPicture__correctAnswer {
+.QuestionArtist__correctAnswer {
   background-color: rgb(37, 158, 26);
 }
 
-.QuestionPicture__wrongAnswer {
+.QuestionArtist__wrongAnswer {
   background-color: rgb(180, 74, 42);
 }
 

@@ -5,10 +5,11 @@ import StartPageStyles from "./views/StartPage/StartPage.css";
 import { full } from "./services/UIHandler";
 import { questionsContent } from "./views/Questions/Questions";
 import { scoreContent } from "./views/Score/Score";
+import { categoriesPicturesContent } from "./views/CategoriesPictures/CategoriesPictures";
+import { questionsPicturesContent } from "./views/QuestionPictures/QuestionPictures";
 
 function pushInitialHash() {
   window.location = "/#/StartPage/";
-  // window.location = "#/Score/";
 }
 
 export const router = () => {
@@ -18,12 +19,15 @@ export const router = () => {
     "#/Question/": questionsContent,
     "#/Question/?": questionsContent,
     "#/Score/": scoreContent,
-    '#/Score/?': scoreContent
+    "#/Score/?": scoreContent,
+    "#/CategoriesPictures": categoriesPicturesContent,
+    "#/QuestionPictures/": questionsPicturesContent,
+    "#/QuestionPictures/?": questionsPicturesContent,
   };
   const main = document.querySelector(".container");
   let request = Utils.parseRequestURL();
-  let currentContent = routes[request];
-  main.innerHTML = currentContent;
+  // let currentContent = routes[request];
+  // main.innerHTML = currentContent;
 };
 
 window.addEventListener("hashchange", router);

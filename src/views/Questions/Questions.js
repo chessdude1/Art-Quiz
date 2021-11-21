@@ -1,7 +1,8 @@
 import { images } from "../../../image-data/images";
 import questionsStyles from "./Questions.css";
 import { arrOfResolvedCards } from "../Score/Score";
-import { PicturesStore } from "../Categories/Categories";
+import { ArtistsStore } from "../Categories/Categories";
+
 class Questions {
   constructor(numberOfCategory) {
     this.correctQuestionCounter = 0;
@@ -30,8 +31,8 @@ class Questions {
 
   endCategoryHandler() {
     let correctQuestion = this.correctQuestionCounter;
-    PicturesStore[this.numberOfCategory][2] = true;
-    PicturesStore[this.numberOfCategory - 1][1] = this.correctQuestionCounter; //устанавливаем для следующей карточки флаг, делающий ее цветной и записываем количество правильных ответов
+    ArtistsStore[this.numberOfCategory][2] = true;
+    ArtistsStore[this.numberOfCategory - 1][1] = this.correctQuestionCounter; //устанавливаем для следующей карточки флаг, делающий ее цветной и записываем количество правильных ответов
     this.questionsCounter = 0; //обнуление счетчиков
     this.correctQuestionCounter = 0;
     return `        <div class="bodyModalWindowEndCategory">
@@ -71,23 +72,23 @@ class Questions {
           <div class="QuestionPicture__Answers">
               <div class="QuestionPicture__Answer_left ${
                 answers[0] == images[i - 1].author
-                  ? "QuestionPictureCorrect"
-                  : "QuestionPictureWrong"
+                  ? "QuestionArtistCorrect"
+                  : "QuestionArtistWrong"
               }">${answers[0]}</div>
               <div class="QuestionPicture__Answer_right ${
                 answers[1] == images[i - 1].author
-                  ? "QuestionPictureCorrect"
-                  : "QuestionPictureWrong"
+                  ? "QuestionArtistCorrect"
+                  : "QuestionArtistWrong"
               }">${answers[1]}</div>
               <div class="QuestionPicture__Answer_left ${
                 answers[2] == images[i - 1].author
-                  ? "QuestionPictureCorrect"
-                  : "QuestionPictureWrong"
+                  ? "QuestionArtistCorrect"
+                  : "QuestionArtistWrong"
               }">${answers[2]}</div>
               <div class="QuestionPicture__Answer_right ${
                 answers[3] == images[i - 1].author
-                  ? "QuestionPictureCorrect"
-                  : "QuestionPictureWrong"
+                  ? "QuestionArtistCorrect"
+                  : "QuestionArtistWrong"
               }">${answers[3]}</div>
           </div>
       </div>
@@ -139,13 +140,11 @@ export function changeQuestion(elem) {
   }
 }
 
-export function checkCorrectPictureAnswer(elem) {
-  if (elem.classList.contains("QuestionPictureCorrect")) {
-    elem.classList.add("QuestionPicture__correctAnswer");
+export function checkCorrectArtistAnswer(elem) {
+  if (elem.classList.contains("QuestionArtistCorrect")) {
+    elem.classList.add("QuestionArtist__correctAnswer");
     questions.correctQuestionCounter++;
-    console.log(
-      (questions.numberOfCategory - 1) * 10 + questions.questionsCounter
-    );
+
     arrOfResolvedCards.push(
       (questions.numberOfCategory - 1) * 10 + questions.questionsCounter
     );
@@ -157,8 +156,8 @@ export function checkCorrectPictureAnswer(elem) {
         .querySelector(".bodyModalWindow")
         .classList.add("ModalWindowResult__Show");
     }, 1000);
-  } else if (elem.classList.contains("QuestionPictureWrong")) {
-    elem.classList.add("QuestionPicture__wrongAnswer");
+  } else if (elem.classList.contains("QuestionArtistWrong")) {
+    elem.classList.add("QuestionArtist__wrongAnswer");
     setTimeout(() => {
       document
         .querySelector(".ModalWindowResult__Wrong")

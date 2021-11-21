@@ -1,6 +1,6 @@
 import categoriesStyles from "./Categories.css";
 
-class Categories {
+export class Categories {
   constructor(CategoriesStore) {
     this.CategoriesStore = CategoriesStore;
   }
@@ -59,7 +59,7 @@ class Categories {
   }
 }
 
-export let PicturesStore = [
+export let ArtistsStore = [
   [1, 0, true, "PORTRAIT"],
   [2, 0, false, "LANDSCAPE"],
   [3, 0, false, "STILL LIFE"],
@@ -74,15 +74,14 @@ export let PicturesStore = [
 
 // первая цифра Номер карточки, вторая количество ответов, третье - состояние было нажато ил нет
 
-let categories = new Categories(PicturesStore);
+let categories = new Categories(ArtistsStore);
 export let categoriesContent = categories.render();
 
-export function categoryHandler(elem) {
+export function firstQuestionHandler(elem) {
   if (elem.closest(".CategoriesCard")) {
     window.location = "/#/Question/";
     categoriesContent = categories.render();
   }
-  console.log(PicturesStore);
 }
 
 export function artistQuizHandler(elem) {

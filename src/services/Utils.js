@@ -5,6 +5,8 @@ const Utils = {
       url = "#/Question/?";
     } else if (url.indexOf("/Score/?") != -1) {
       url = "#/Score/?";
+    } else if (url.indexOf("#/QuestionPictures/?") != -1) {
+      url = "#/QuestionPictures/?";
     }
     return url;
   },

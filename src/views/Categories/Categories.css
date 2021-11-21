@@ -54,6 +54,7 @@
 .CategoriesCard p {
   padding-left: 10px;
 }
+
 .CategoriesCard__Number {
   font-size: 72px;
   font-weight: 900;
@@ -73,8 +74,7 @@
 }
 
 .CategoriesCardDisabled {
-  /* background-color: #00000013; */
-  color: #00000013;
+  color: #00000013 !important;
 }
 
 .Img_CategoriesCardDisabled {
