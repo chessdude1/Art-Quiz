@@ -2,7 +2,8 @@ import { images } from "../../../image-data/images";
 import questionsStyles from "./Questions.css";
 import { arrOfResolvedCards } from "../Score/Score";
 import { ArtistsStore } from "../Categories/Categories";
-
+import { correctAnswerAudio } from "../Settings/Settings";
+import { wrongAnswerAudio } from "../Settings/Settings";
 class Questions {
   constructor(numberOfCategory) {
     this.correctQuestionCounter = 0;
@@ -143,30 +144,29 @@ export function changeQuestion(elem) {
 export function checkCorrectArtistAnswer(elem) {
   if (elem.classList.contains("QuestionArtistCorrect")) {
     elem.classList.add("QuestionArtist__correctAnswer");
+    correctAnswerAudio.play();
     questions.correctQuestionCounter++;
 
     arrOfResolvedCards.push(
       (questions.numberOfCategory - 1) * 10 + questions.questionsCounter
     );
-    setTimeout(() => {
-      document
-        .querySelector(".ModalWindowResult__Correct")
-        .classList.add("ModalWindowResult__Show");
-      document
-        .querySelector(".bodyModalWindow")
-        .classList.add("ModalWindowResult__Show");
-    }, 1000);
+    showModalWindow();
   } else if (elem.classList.contains("QuestionArtistWrong")) {
+    wrongAnswerAudio.play();
     elem.classList.add("QuestionArtist__wrongAnswer");
-    setTimeout(() => {
-      document
-        .querySelector(".ModalWindowResult__Wrong")
-        .classList.add("ModalWindowResult__Show");
-      document
-        .querySelector(".bodyModalWindow")
-        .classList.add("ModalWindowResult__Show");
-    }, 1000);
+    showModalWindow();
   }
+}
+
+function showModalWindow() {
+  setTimeout(() => {
+    document
+      .querySelector(".ModalWindowResult__Wrong")
+      .classList.add("ModalWindowResult__Show");
+    document
+      .querySelector(".bodyModalWindow")
+      .classList.add("ModalWindowResult__Show");
+  }, 1000);
 }
 
 let questions = new Questions(numberOfQuestion);

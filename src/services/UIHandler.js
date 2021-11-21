@@ -13,6 +13,7 @@ import { firstQuestionPictureHandler } from "../views/CategoriesPictures/Categor
 import { changeQuestionPicture } from "../views/QuestionPictures/QuestionPictures";
 import { checkCorrectPictureAnswer } from "../views/QuestionPictures/QuestionPictures";
 import { settingsBtnHandler } from "../views/Settings/Settings";
+import { volumeHandler } from "../views/Settings/Settings";
 export let full = document.querySelector(".body");
 
 full.addEventListener("click", (e) => {
@@ -32,4 +33,5 @@ full.addEventListener("click", (e) => {
   changeQuestionPicture(e.target);
   checkCorrectPictureAnswer(e.target);
   settingsBtnHandler(e.target);
+  volumeHandler(e);
 });

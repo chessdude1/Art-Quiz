@@ -1,7 +1,10 @@
 import settingsStyle from "./Settings.css";
-
+import correctAnswerSound from "../../audio/correct_answer.mp3";
+import wrongAnswerSound from "../../audio/wrong_answer.mp3";
 class Settings {
-  constructor() {}
+  constructor(settingsData) {
+    this.settingsData = settingsData;
+  }
   render() {
     return `<div class="Settings">
             <header class="headerLogo">
@@ -33,7 +36,7 @@ class Settings {
                 </div>
             </main>
             <footer class="SettingsFooter">
-                <button class="SettingsSave">SAVE</button>
+                <button class="SettingsSave HomeBtn">SAVE</button>
             </footer>
         </div>`;
   }
@@ -45,6 +48,22 @@ export function settingsBtnHandler(elem) {
   }
 }
 
-let settings = new Settings();
+let settingsData = [0, false]; //в массиве лежит актальное состояние о громкости и наличии таймера
+
+export let correctAnswerAudio = new Audio(correctAnswerSound);
+export let wrongAnswerAudio = new Audio(wrongAnswerSound);
+
+export function volumeHandler(elem) {
+  if (elem.target.closest(".Settings__ProgressContainer")) {
+    correctAnswerAudio.volume = elem.offsetX / elem.target.clientWidth;
+    wrongAnswerAudio.volume = elem.offsetX / elem.target.clientWidth;
+    document.querySelector(
+      ".Settings__Progress"
+    ).style.width = `${elem.offsetX}px`;
+    correctAnswerAudio.play();
+  }
+}
+
+let settings = new Settings(settingsData);
 
 export let settingsContent = settings.render();

@@ -2,6 +2,8 @@ import questionPicturesStyles from "./QuestionPictures.css";
 import { images } from "../../../image-data/images";
 import { arrOfResolvedCards } from "../Score/Score";
 import { PicturesStore } from "../CategoriesPictures/CategoriesPictures";
+import { correctAnswerAudio } from "../Settings/Settings";
+import { wrongAnswerAudio } from "../Settings/Settings";
 
 class QuestionPictures {
   constructor(numberOfCategory) {
@@ -147,28 +149,26 @@ export function checkCorrectPictureAnswer(elem) {
   if (elem.classList.contains("QuestionPictureCorrect")) {
     elem.classList.add("QuestionPicture__correctAnswer");
     questionsPictures.correctQuestionCounter++;
-
+    correctAnswerAudio.play();
     arrOfResolvedCards.push(
       (questionsPictures.numberOfCategory - 1) * 10 +
         questionsPictures.questionsCounter
     );
-    setTimeout(() => {
-      document
-        .querySelector(".ModalWindowResult__Correct")
-        .classList.add("ModalWindowResult__Show");
-      document
-        .querySelector(".bodyModalWindow")
-        .classList.add("ModalWindowResult__Show");
-    }, 1000);
+    showModalWindow();
   } else if (elem.classList.contains("QuestionPictureWrong")) {
+    wrongAnswerAudio.play();
     elem.classList.add("QuestionPicture__Wrong");
-    setTimeout(() => {
-      document
-        .querySelector(".ModalWindowResult__Wrong")
-        .classList.add("ModalWindowResult__Show");
-      document
-        .querySelector(".bodyModalWindow")
-        .classList.add("ModalWindowResult__Show");
-    }, 1000);
+    showModalWindow();
   }
+}
+
+function showModalWindow() {
+  setTimeout(() => {
+    document
+      .querySelector(".ModalWindowResult__Wrong")
+      .classList.add("ModalWindowResult__Show");
+    document
+      .querySelector(".bodyModalWindow")
+      .classList.add("ModalWindowResult__Show");
+  }, 1000);
 }

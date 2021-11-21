@@ -7,10 +7,11 @@
 }
 
 .Settings__Progress {
+  margin-left: 4px;
   background-color: var(--vinous);
   border-radius: 6px;
   height: 6px;
-  width: 70px;
+  width: 50%;
 }
 
 .SettingsWrapper {
