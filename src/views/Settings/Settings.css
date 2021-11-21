@@ -1,0 +1,108 @@
+.Settings__ProgressContainer {
+  background-color: #e5e5e5;
+  width: 500%;
+  height: 6px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Settings__Progress {
+  background-color: var(--vinous);
+  border-radius: 6px;
+  height: 6px;
+  width: 70px;
+}
+
+.SettingsWrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.Settings__volume {
+  background-color: var(--white);
+  width: 41.5%;
+}
+
+.Settings__Time {
+  background-color: var(--white);
+  width: 41.5%;
+}
+.Settings__TimeContainer {
+  max-width: 57.14%;
+  margin: 0 auto;
+}
+.Settings__volumeContainer {
+  max-width: 57.14%;
+  margin: 0 auto;
+}
+
+.Settings__volumeControl {
+  display: flex;
+  align-items: center;
+}
+
+.Settings__VolumePicture {
+  padding-top: 90px;
+  margin: 0 auto;
+}
+
+.Settings__TimePicture {
+  padding-top: 75px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.SettingsTime__CheckBox {
+  margin: 0 auto;
+  width: 10%;
+  border: 1px solid var(--vinous);
+}
+
+.Setting__VolumeTitle {
+  padding-top: 60px;
+  text-align: center;
+  font-family: "Montserrat";
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--vinous);
+  padding-bottom: 55px;
+}
+
+.Settings__volumeControl {
+  padding-top: 55px;
+}
+
+.Settings__checked {
+  padding: 1px;
+}
+
+.Settings__checked_disable {
+  visibility: hidden;
+}
+
+.Setting__TimeTitle {
+  padding-top: 60px;
+  text-align: center;
+  font-family: "Montserrat";
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--vinous);
+  padding-bottom: 55px;
+}
+
+.SettingsFooter {
+  margin-top: 173px;
+  text-align: center;
+}
+
+.SettingsSave {
+  margin: 0 auto;
+  height: 50px;
+  width: 150px;
+  text-align: center;
+  font-size: 18px;
+  background-color: var(--vinous);
+  color: var(--white);
+  font-family: "Montserrat";
+}
