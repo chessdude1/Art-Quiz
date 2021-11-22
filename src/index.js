@@ -50,28 +50,22 @@ function animationFlash() {
 }
 
 function animationWipe() {
+  const main = document.querySelector(".container");
+  main.classList.remove("containerShow");
   document
     .querySelector(".AnimationChangePage")
     .classList.add("AnimationChangePage__Show");
 
-  document.body.classList.add("bodyDisable");
+  // document.body.classList.add("bodyDisable");
 
   setTimeout(() => {
     document
       .querySelector(".AnimationChangePage")
       .classList.remove("AnimationChangePage__Show");
-  }, 1000);
-  setTimeout(() => {
-    document.body.classList.remove("bodyDisable");
-  }, 300);
+    main.classList.add("containerShow");
+  }, 600);
 
-  let main = document.querySelector(".container");
-  main.classList.add("containerShow");
 }
-
-// document.body.addEventListener("click", (e) => {
-//   document.querySelector(".showpuk").classList.add("showPukTest");
-// });
 
 window.addEventListener("hashchange", router);
 window.addEventListener("load", pushInitialHash);

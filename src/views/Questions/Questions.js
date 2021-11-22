@@ -35,6 +35,14 @@ class Questions {
 
   endCategoryHandler() {
     let correctQuestion = this.correctQuestionCounter;
+    let message = "";
+    if (correctQuestion > 7) {
+      message = "Awesome!";
+    } else if (correctQuestion < 7 && correctQuestion > 4) {
+      message = "Ok";
+    } else {
+      message = "I know you can do better";
+    }
     ArtistsStore[this.numberOfCategory][2] = true;
     ArtistsStore[this.numberOfCategory - 1][1] = this.correctQuestionCounter; //устанавливаем для следующей карточки флаг, делающий ее цветной и записываем количество правильных ответов
     this.questionsCounter = 0; //обнуление счетчиков
@@ -43,11 +51,17 @@ class Questions {
     return `        <div class="bodyModalWindowEndCategory">
     <div class="ModalWindowEndCategoryContainer ">
         <p class="EndCategory__Congratulations">
-            CONGRATULATIONS
+            ${message}
         </p>
         <p class="EndCategory__Result">${correctQuestion} / 10</p>
 
-        <img src="./images/ModalWindowEnd/Congratulations.svg">
+        ${
+          message == "I know you can do better" ? (
+            ""
+          ) : (
+            '<img src="./images/ModalWindowEnd/Congratulations.svg"></img>'
+          )
+        }
         <div class="EndCategory_Controls">
             <button class="ModalWindowEndBtn ModalWindowEndBtn__NextBtn HomeBtn">HOME</button>
             <button class="ModalWindowEndBtn ModalWindowEndBtn__Home ModalWindow_NextQuizBtn">NEXT QUIZ</button>

@@ -15,9 +15,9 @@
 }
 
 .QuestionPicture__correctAnswer {
-  background-color: rgb(37, 158, 26);
+  background-color: rgb(37, 158, 26) !important;
 }
 
 .QuestionPicture__Wrong {
-  background-color: rgb(180, 74, 42);
+  background-color: rgb(180, 74, 42) !important;
 }

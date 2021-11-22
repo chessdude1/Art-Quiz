@@ -1,6 +1,12 @@
 import settingsStyle from "./Settings.css";
 import correctAnswerSound from "../../audio/correct_answer.mp3";
 import wrongAnswerSound from "../../audio/wrong_answer.mp3";
+console.log(
+  "Имеется две разных анимации открытия страниц, и анимация отображения модального окна для результата ответа",
+  "В настройках неправильно отображается значение таймера, когда таймер изменяют в меньшую сторону",
+  "Все данные о настройках хранятся в local storage",
+  "В зависимоcти от количества правильных ответов, выводится разные результат категории "
+);
 class Settings {
   constructor(settingsData) {
     this.settingsData = settingsData;
@@ -90,7 +96,6 @@ function getLocalStorageSettings() {
     let TimeBarOffsetFromStorage = localStorage.getItem("timeBarOffsetStorage");
     TimeBarOffset = TimeBarOffsetFromStorage;
   }
-  
 }
 
 window.addEventListener("beforeunload", setLocalStorageSettings);
@@ -115,14 +120,14 @@ export function volumeHandler(elem) {
     correctAnswerAudio.play();
   }
 }
-let TimeBarOffset = 0
+let TimeBarOffset = 0;
 
 export function timeHandler(elem) {
   if (elem.target.closest(".Settings__ProgressTimeContainer")) {
     document.querySelector(
       ".Settings__ProgressTime"
     ).style.width = `${elem.offsetX}px`;
-    TimeBarOffset = elem.offsetX
+    TimeBarOffset = elem.offsetX;
     timeOnAnswer =
       Math.round(((elem.offsetX / elem.target.clientWidth) * 30) / 5) * 5;
     document.querySelector(".ShowTimeOnQuestion").textContent =
