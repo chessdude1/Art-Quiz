@@ -50,7 +50,7 @@ class Questions {
         <img src="./images/ModalWindowEnd/Congratulations.svg">
         <div class="EndCategory_Controls">
             <button class="ModalWindowEndBtn ModalWindowEndBtn__NextBtn HomeBtn">HOME</button>
-            <button class="ModalWindowEndBtn ModalWindowEndBtn__Home">NEXT QUIZ</button>
+            <button class="ModalWindowEndBtn ModalWindowEndBtn__Home ModalWindow_NextQuizBtn">NEXT QUIZ</button>
         </div>
     </div>
 
@@ -137,6 +137,16 @@ export function getCategoryNumber(elem) {
     let id = currentCategoryElem.getAttribute("CategoriesCardId");
     questions.numberOfCategory = Number(id);
     questionsContent = questions.render();
+    setTimeout(checkTimer, 0);
+  }
+}
+
+export function nextCategoryBtn(elem) {
+  if (elem.classList.contains("ModalWindow_NextQuizBtn")) {
+    let newNumberOfCategory = questions.numberOfCategory + 1;
+    questions.numberOfCategory = newNumberOfCategory;
+    questionsContent = questions.render();
+    window.location = "/#/Question/";
     setTimeout(checkTimer, 0);
   }
 }

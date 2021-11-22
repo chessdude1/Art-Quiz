@@ -85,7 +85,10 @@ let categories = new Categories(ArtistsStore);
 export let categoriesContent = categories.render();
 
 export function firstQuestionHandler(elem) {
-  if (elem.closest(".CategoriesCard")) {
+  if (
+    elem.closest(".CategoriesCardActive") &&
+    elem.closest(".CategoriesCard")
+  ) {
     window.location = "/#/Question/";
     categoriesContent = categories.render();
   }

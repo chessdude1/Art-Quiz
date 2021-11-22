@@ -86,7 +86,7 @@ export function picturesQuizHandler(elem) {
 }
 
 export function firstQuestionPictureHandler(elem) {
-  if (elem.closest(".CategoriesCardPictures")) {
+  if (elem.closest(".CategoriesCardPictures") &&  elem.closest(".CategoriesCardActive") ) {
     window.location = "/#/QuestionPictures/";
     categoriesPicturesContent = categoriesPictures.renderPictures();
   }

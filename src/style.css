@@ -33,8 +33,6 @@ body {
   }
 }
 
-/* test style */
-
 .AnimationChangePage {
   background-color: var(--blue);
   top: 0;
@@ -50,3 +48,6 @@ body {
   left: 0% !important;
   transition: left 0.3s ease-in-out;
 }
+
+
+/* test style */

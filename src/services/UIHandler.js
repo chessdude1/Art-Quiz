@@ -17,6 +17,8 @@ import { volumeHandler } from "../views/Settings/Settings";
 import { timeGameToggle } from "../views/Settings/Settings";
 import { stopTimerHandler } from "../views/Questions/Questions";
 import { timeHandler } from "../views/Settings/Settings";
+import { nextCategoryBtn } from "../views/Questions/Questions";
+import { nextCategoryPicturesBtn } from "../views/QuestionPictures/QuestionPictures";
 
 export let full = document.querySelector(".body");
 
@@ -41,4 +43,6 @@ full.addEventListener("click", (e) => {
   timeHandler(e);
   timeGameToggle(e.target);
   stopTimerHandler(e.target);
+  nextCategoryBtn(e.target);
+  nextCategoryPicturesBtn(e.target);
 });

@@ -31,7 +31,7 @@ class QuestionPictures {
         <img src="./images/ModalWindowEnd/Congratulations.svg">
         <div class="EndCategory_Controls">
             <button class="ModalWindowEndBtn ModalWindowEndBtn__NextBtn HomeBtn">HOME</button>
-            <button class="ModalWindowEndBtn ModalWindowEndBtn__Home">NEXT QUIZ</button>
+            <button class="ModalWindowEndBtn ModalWindowEndBtn__Home ModalWindow_NextQuizPicturesBtn">NEXT QUIZ</button>
         </div>
     </div>
 
@@ -129,6 +129,16 @@ class QuestionPictures {
     } else {
       return this.questionsState[this.questionsCounter];
     }
+  }
+}
+
+export function nextCategoryPicturesBtn(elem) {
+  if (elem.classList.contains("ModalWindow_NextQuizPicturesBtn")) {
+    let newNumberOfCategory = questionsPictures.numberOfCategory + 1;
+    questionsPictures.numberOfCategory = newNumberOfCategory;
+    questionsPicturesContent = questionsPictures.render();
+    window.location = "/#/QuestionPictures/";
+    setTimeout(checkTimer, 0);
   }
 }
 
