@@ -15,7 +15,44 @@
 
 <body class="body">
     <div class="container">
+        <div class="Settings">
+            <header class="headerLogo">
+                <img class="headerLogoImg" src="./images/Common/logo.svg">
+                <div class="SettingsHeader"></div>
+            </header>
+            <main class="SettingsWrapper">
 
+                <div class="Settings__volume">
+                    <div class="Settings__volumeContainer">
+                        <img class="Settings__VolumePicture" src="./images/Settings/SoundBig.svg">
+                        <div class="Settings__volumeControl">
+                            <img src="./images/Settings/volumeOff.svg">
+                            <div class="Settings__ProgressContainer">
+                                <div class="Settings__Progress"></div>
+                            </div>
+                        </div>
+                        <p class="Setting__VolumeTitle">VOLUME</p>
+                    </div>
+                </div>
+                <div class="Settings__Time">
+                    <div class="Settings__TimeContainer">
+                        <img class="Settings__TimePicture" src="./images/Settings/timeBig.svg">
+                        <div class="SettingsTime__CheckBox">
+                            <img class="Settings__checked " src="./images/Settings/checked.svg">
+                        </div>
+                        <div class="Settings__ProgressTimeContainer">
+                            <div class="Settings__ProgressTime"></div>
+                        </div>
+                        <div class='ShowTimeOnQuestion'> ${timeOnAnswer} </div>
+                        <p class="Setting__TimeTitle">TIME GAME </p>
+                    </div>
+                </div>
+            </main>
+            <footer class="SettingsFooter">
+                <button class="SettingsSave HomeBtn">SAVE</button>
+            </footer>
+        </div>
+    </div>
 </body>
 
 </html>

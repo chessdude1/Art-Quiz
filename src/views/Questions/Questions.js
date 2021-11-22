@@ -4,12 +4,15 @@ import { arrOfResolvedCards } from "../Score/Score";
 import { ArtistsStore } from "../Categories/Categories";
 import { correctAnswerAudio } from "../Settings/Settings";
 import { wrongAnswerAudio } from "../Settings/Settings";
+import { timeGameStatus } from "../Settings/Settings";
+import { timeOnAnswer } from "../Settings/Settings";
 class Questions {
   constructor(numberOfCategory) {
     this.correctQuestionCounter = 0;
     this.numberOfCategory = numberOfCategory;
     this.questionsState = [];
     this.questionsCounter = 0;
+    this.stopBtnCounter = 0;
   }
   generateRandomQuestions(currentQuestion) {
     let setOfWrongAnswers = new Set();
@@ -36,6 +39,7 @@ class Questions {
     ArtistsStore[this.numberOfCategory - 1][1] = this.correctQuestionCounter; //устанавливаем для следующей карточки флаг, делающий ее цветной и записываем количество правильных ответов
     this.questionsCounter = 0; //обнуление счетчиков
     this.correctQuestionCounter = 0;
+    this.stopBtnCounter = 0;
     return `        <div class="bodyModalWindowEndCategory">
     <div class="ModalWindowEndCategoryContainer ">
         <p class="EndCategory__Congratulations">
@@ -63,8 +67,11 @@ class Questions {
       let answers = this.generateRandomQuestions(i);
 
       questionFragment.push(` 
-      <div class="bodyQuestionPicture">
-      <header class="QuestionHead">WHO IS THE AUTHOR OF THIS PICTURE?</header>
+      <header class="QuestionHeader">
+                <div class="QuestionPause"><img class='QuestionPauseArtist_Btn' src="./images/Question/pause.svg"><p class='QuestionPause_Text'>2 / 2</p> </div>
+                <p class="QuestionHead__Text"> WHO IS THE AUTHOR OF THIS PICTURE?</p>
+                <div class='QuestionTimer'><img src="./images/Question/timer.svg"> <p class='QuestionTimer_Text'>${timeOnAnswer}</p></div>
+            </header>
       <div class="QuestionWrapper">
           <div class="QuestionPicture">
               <img src="./images/pictures/${i - 1}.jpg">
@@ -123,13 +130,14 @@ class Questions {
 }
 
 let numberOfQuestion = 1;
-
+let NumberOfStop = 2;
 export function getCategoryNumber(elem) {
   let currentCategoryElem = elem.closest(".CategoriesCard");
   if (currentCategoryElem) {
     let id = currentCategoryElem.getAttribute("CategoriesCardId");
     questions.numberOfCategory = Number(id);
     questionsContent = questions.render();
+    setTimeout(checkTimer, 0);
   }
 }
 
@@ -138,6 +146,7 @@ export function changeQuestion(elem) {
     questions.questionsCounter++;
     window.location = `#/Question/?${questions.numberOfCategory}/${questions.questionsCounter}`;
     questionsContent = questions.render();
+    setTimeout(checkTimer, 0);
   }
 }
 
@@ -150,24 +159,87 @@ export function checkCorrectArtistAnswer(elem) {
     arrOfResolvedCards.push(
       (questions.numberOfCategory - 1) * 10 + questions.questionsCounter
     );
-    showModalWindow();
+    showModalWindow(true);
   } else if (elem.classList.contains("QuestionArtistWrong")) {
+    clearTimeout(setTimer);
     wrongAnswerAudio.play();
     elem.classList.add("QuestionArtist__wrongAnswer");
-    showModalWindow();
+    showModalWindow(false);
   }
 }
 
-function showModalWindow() {
-  setTimeout(() => {
-    document
-      .querySelector(".ModalWindowResult__Wrong")
-      .classList.add("ModalWindowResult__Show");
-    document
-      .querySelector(".bodyModalWindow")
-      .classList.add("ModalWindowResult__Show");
+export function showModalWindow(status) {
+  if (status) {
+    setTimeout(() => {
+      document
+        .querySelector(".ModalWindowResult__Correct")
+        .classList.add("ModalWindowResult__Show");
+      document
+        .querySelector(".bodyModalWindow")
+        .classList.add("ModalWindowResult__Show");
+    }, 1000);
+  } else {
+    setTimeout(() => {
+      document
+        .querySelector(".ModalWindowResult__Wrong")
+        .classList.add("ModalWindowResult__Show");
+      document
+        .querySelector(".bodyModalWindow")
+        .classList.add("ModalWindowResult__Show");
+    }, 1000);
+  }
+
+  stopTimer = true;
+}
+
+let stopTimer = false;
+
+function setTimer() {
+  document.querySelector(
+    ".QuestionPause_Text"
+  ).textContent = `${NumberOfStop} / 2`;
+  let timeOnAnswerCopy = timeOnAnswer;
+  stopTimer = false;
+  setTimeout(function timer() {
+    document.querySelector(".QuestionTimer_Text").textContent =
+      timeOnAnswerCopy;
+    timeOnAnswerCopy--;
+    if (timeOnAnswerCopy === -1) {
+      showModalWindow(false);
+      wrongAnswerAudio.play();
+      timeOnAnswerCopy = 0;
+      document.querySelector(".QuestionTimer_Text").textContent =
+        timeOnAnswerCopy;
+      return;
+    } else if (stopTimer) {
+      timeOnAnswerCopy = "";
+      return;
+    } else {
+      setTimeout(timer, 1000);
+    }
   }, 1000);
 }
 
 let questions = new Questions(numberOfQuestion);
 export let questionsContent = questions.render();
+
+export function stopTimerHandler(elem) {
+  if (elem.closest(".QuestionPauseArtist_Btn")) {
+    if (NumberOfStop !== 0) {
+      stopTimer = true;
+      NumberOfStop--;
+      document.querySelector(
+        ".QuestionPause_Text"
+      ).textContent = `${NumberOfStop} / 2`;
+    }
+  }
+}
+
+export function checkTimer() {
+  if (timeGameStatus) {
+    setTimer();
+  } else {
+    document.querySelector(".QuestionTimer").classList.add("visibilityHidden");
+    document.querySelector(".QuestionPause").classList.add("visibilityHidden");
+  }
+}

@@ -1,14 +1,41 @@
+
 .QuestionHead {
+  display: flex;
+  justify-content: space-around;
+}
+
+.QuestionHeader {
   font-family: "Montserrat", sans-serif;
   color: var(--vinous);
   font-size: 30px;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 25px;
 }
 
 .QuestionWrapper {
   margin-top: 32px;
+}
+.QuestionTimer {
+  position: relative;
+  left: 10%;
+  display: flex;
+align-items: center
+}
+
+.QuestionPause {
+  position: relative;
+  display: flex;
+  margin-right: 10%;
+}
+
+.QuestionPause p {
+  padding-left: 10px;
+}
+
+.QuestionTimer p {
+  padding-left: 10px;
 }
 
 .QuestionPicture {
@@ -173,4 +200,8 @@
   background-color: var(--vinous);
   width: 150px;
   height: 50px;
+}
+
+.visibilityHidden {
+  visibility: hidden;
 }

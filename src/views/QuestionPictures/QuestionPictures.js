@@ -4,7 +4,10 @@ import { arrOfResolvedCards } from "../Score/Score";
 import { PicturesStore } from "../CategoriesPictures/CategoriesPictures";
 import { correctAnswerAudio } from "../Settings/Settings";
 import { wrongAnswerAudio } from "../Settings/Settings";
-
+import { showModalWindow } from "../Questions/Questions";
+import { timeGameStatus } from "../Settings/Settings";
+import { checkTimer } from "../Questions/Questions";
+import { timeOnAnswer } from "../Settings/Settings";
 class QuestionPictures {
   constructor(numberOfCategory) {
     this.correctQuestionCounter = 0;
@@ -61,9 +64,14 @@ class QuestionPictures {
     ) {
       let answers = this.generateRandomQuestions(i);
       questionFragment.push(`<div class="bodyQuestionPicture">
-      <header class="QuestionHead">Which is ${
+      <header class="QuestionHeader">
+      <div class="QuestionPause"><img class='QuestionPauseArtist_Btn' src="./images/Question/pause.svg"><p class='QuestionPause_Text'>2 / 2</p> </div>
+      <p class="QuestionHead__Text"> Which is ${
         images[i - 1].author
-      } picture?</header>
+      } picture?</p>
+      <div class='QuestionTimer'><img src="./images/Question/timer.svg"> <p class='QuestionTimer_Text'>${timeOnAnswer}</p></div>
+  </header>
+
       <div class="QuestionWrapper">
           <div class="QuestionPicture__PicturesBlock">
               <img src="./images/pictures/${answers[0]}.jpg">
@@ -135,6 +143,7 @@ export function getCategoryPicturesNumber(elem) {
     let id = currentCategoryPictureElem.getAttribute("CategoriesCardId");
     questionsPictures.numberOfCategory = Number(id);
     questionsPicturesContent = questionsPictures.render();
+    setTimeout(checkTimer, 0);
   }
 }
 
@@ -143,6 +152,7 @@ export function changeQuestionPicture(elem) {
     questionsPictures.questionsCounter++;
     window.location = `#/QuestionPictures/?${questionsPictures.numberOfCategory}/${questionsPictures.questionsCounter}`;
     questionsPicturesContent = questionsPictures.render();
+    setTimeout(checkTimer, 0);
   }
 }
 export function checkCorrectPictureAnswer(elem) {
@@ -154,21 +164,10 @@ export function checkCorrectPictureAnswer(elem) {
       (questionsPictures.numberOfCategory - 1) * 10 +
         questionsPictures.questionsCounter
     );
-    showModalWindow();
+    showModalWindow(true);
   } else if (elem.classList.contains("QuestionPictureWrong")) {
     wrongAnswerAudio.play();
     elem.classList.add("QuestionPicture__Wrong");
-    showModalWindow();
+    showModalWindow(false);
   }
-}
-
-function showModalWindow() {
-  setTimeout(() => {
-    document
-      .querySelector(".ModalWindowResult__Wrong")
-      .classList.add("ModalWindowResult__Show");
-    document
-      .querySelector(".bodyModalWindow")
-      .classList.add("ModalWindowResult__Show");
-  }, 1000);
 }

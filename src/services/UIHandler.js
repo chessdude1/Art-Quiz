@@ -14,6 +14,10 @@ import { changeQuestionPicture } from "../views/QuestionPictures/QuestionPicture
 import { checkCorrectPictureAnswer } from "../views/QuestionPictures/QuestionPictures";
 import { settingsBtnHandler } from "../views/Settings/Settings";
 import { volumeHandler } from "../views/Settings/Settings";
+import { timeGameToggle } from "../views/Settings/Settings";
+import { stopTimerHandler } from "../views/Questions/Questions";
+import { timeHandler } from "../views/Settings/Settings";
+
 export let full = document.querySelector(".body");
 
 full.addEventListener("click", (e) => {
@@ -34,4 +38,7 @@ full.addEventListener("click", (e) => {
   checkCorrectPictureAnswer(e.target);
   settingsBtnHandler(e.target);
   volumeHandler(e);
+  timeHandler(e);
+  timeGameToggle(e.target);
+  stopTimerHandler(e.target);
 });
