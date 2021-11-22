@@ -27,8 +27,8 @@ export const router = () => {
   };
   const main = document.querySelector(".container");
   let request = Utils.parseRequestURL();
-  let currentContent = routes[request];
-  main.innerHTML = currentContent;
+  // let currentContent = routes[request];
+  // main.innerHTML = currentContent;
 };
 
 window.addEventListener("hashchange", router);

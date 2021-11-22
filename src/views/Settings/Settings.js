@@ -49,18 +49,55 @@ class Settings {
 export function settingsBtnHandler(elem) {
   if (elem.closest(".settings")) {
     window.location = "/#/Settings/";
+    setTimeout(() => {
+      document.querySelector(".ShowTimeOnQuestion").textContent = timeOnAnswer;
+    }, 0);
+    setTimeout(() => {
+      document.querySelector(
+        ".Settings__Progress"
+      ).style.width = `${volumeControl}px`;
+    }, 0);
   }
 }
 
-export let timeGameStatus = true; //в массиве лежит актальное состояние о громкости и наличии таймера
+let volumeControl = 50;
+function setLocalStorageSettings() {
+  localStorage.setItem("timeOnAnswerLocalStorage", timeOnAnswer);
+  localStorage.setItem("volumeLocalStorage", volume);
+  localStorage.setItem("volumeControlLocalStorage", volumeControl);
+}
+
+function getLocalStorageSettings() {
+  if (localStorage.getItem("timeOnAnswerLocalStorage")) {
+    timeOnAnswer = localStorage.getItem("timeOnAnswerLocalStorage");
+  }
+  if (localStorage.getItem("volumeLocalStorage")) {
+    volume = localStorage.getItem("volumeLocalStorage");
+    wrongAnswerAudio.volume = volume;
+    correctAnswerAudio.volume = volume;
+  }
+  if (localStorage.getItem("volumeControlLocalStorage")) {
+    let volumePosition = localStorage.getItem("volumeControlLocalStorage");
+    volumeControl = volumePosition;
+  }
+}
+
+window.addEventListener("beforeunload", setLocalStorageSettings);
+window.addEventListener("load", getLocalStorageSettings);
+
+export let timeGameStatus = true; // состояние, есть таймер или нет
 export let timeOnAnswer = 30;
 export let correctAnswerAudio = new Audio(correctAnswerSound);
 export let wrongAnswerAudio = new Audio(wrongAnswerSound);
 
+let volume = 0.5;
+
 export function volumeHandler(elem) {
   if (elem.target.closest(".Settings__ProgressContainer")) {
     correctAnswerAudio.volume = elem.offsetX / elem.target.clientWidth;
+    volume = elem.offsetX / elem.target.clientWidth;
     wrongAnswerAudio.volume = elem.offsetX / elem.target.clientWidth;
+    volumeControl = elem.offsetX; // сохранение значения offset для local storage
     document.querySelector(
       ".Settings__Progress"
     ).style.width = `${elem.offsetX}px`;
