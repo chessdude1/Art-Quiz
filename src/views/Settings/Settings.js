@@ -57,6 +57,11 @@ export function settingsBtnHandler(elem) {
         ".Settings__Progress"
       ).style.width = `${volumeControl}px`;
     }, 0);
+    setTimeout(() => {
+      document.querySelector(
+        ".Settings__ProgressTime"
+      ).style.width = `${TimeBarOffset}px`;
+    }, 0);
   }
 }
 
@@ -65,6 +70,7 @@ function setLocalStorageSettings() {
   localStorage.setItem("timeOnAnswerLocalStorage", timeOnAnswer);
   localStorage.setItem("volumeLocalStorage", volume);
   localStorage.setItem("volumeControlLocalStorage", volumeControl);
+  localStorage.setItem("timeBarOffsetStorage", TimeBarOffset);
 }
 
 function getLocalStorageSettings() {
@@ -80,6 +86,11 @@ function getLocalStorageSettings() {
     let volumePosition = localStorage.getItem("volumeControlLocalStorage");
     volumeControl = volumePosition;
   }
+  if (localStorage.getItem("timeBarOffsetStorage")) {
+    let TimeBarOffsetFromStorage = localStorage.getItem("timeBarOffsetStorage");
+    TimeBarOffset = TimeBarOffsetFromStorage;
+  }
+  
 }
 
 window.addEventListener("beforeunload", setLocalStorageSettings);
@@ -104,12 +115,14 @@ export function volumeHandler(elem) {
     correctAnswerAudio.play();
   }
 }
+let TimeBarOffset = 0
 
 export function timeHandler(elem) {
   if (elem.target.closest(".Settings__ProgressTimeContainer")) {
     document.querySelector(
       ".Settings__ProgressTime"
     ).style.width = `${elem.offsetX}px`;
+    TimeBarOffset = elem.offsetX
     timeOnAnswer =
       Math.round(((elem.offsetX / elem.target.clientWidth) * 30) / 5) * 5;
     document.querySelector(".ShowTimeOnQuestion").textContent =
