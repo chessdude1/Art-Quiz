@@ -8,14 +8,45 @@
 body {
   background-color: var(--blue);
   margin: 0 auto;
+  opacity: 1;
+}
+
+.bodyDisable {
+  opacity: 0;
 }
 
 .container {
   max-width: 1000px;
   margin: 0 auto;
+  opacity: 0;
+}
+
+.containerShow {
+  opacity: 1;
+  transition: 1s ease-in-out;
+}
+
+@media (max-width: 1024px) {
+  .bodyStartPage {
+    max-width: 500px;
+    margin: 0 auto;
+  }
 }
 
 /* test style */
 
+.AnimationChangePage {
+  background-color: var(--blue);
+  top: 0;
+  position: absolute;
+  width: 100vw;
+  height: 140vh;
+  z-index: 1;
+  left: -500%;
+  transition: left 0.1s ease-in-out;
+}
 
-
+.AnimationChangePage__Show {
+  left: 0% !important;
+  transition: left 0.3s ease-in-out;
+}

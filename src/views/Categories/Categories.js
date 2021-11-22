@@ -34,7 +34,7 @@ export class Categories {
   render() {
     return `            <div class="bodyCategoriesPage">
       <header class="headerLogo">
-          <img class="headerLogoImg" src="./images/Common/logo.svg">
+          <img class="header_CategoriesLogoImg" src="./images/Common/logo.svg">
       </header>
       <main class="mainCategoriesPage">
           <div class="CategoriesHeader">
@@ -54,6 +54,13 @@ export class Categories {
           </div>
       </main>
       <footer class="footerCategories">
+      <div class='arrowDown'>
+      <div class="arrow one">
+     
+    <img src="../../images/Common/double_arrow_down.svg" alt="double arrow">
+  </div>
+  <div class="arrow two"><img src="../../images/Common/double_arrow_down.svg" alt="double arrow"></div>
+  </div>
       </footer>
   </div>`;
   }
@@ -88,5 +95,8 @@ export function artistQuizHandler(elem) {
   if (elem.classList.contains("quizChoiceArtistsBtn")) {
     window.location = "/#/Categories";
     categoriesContent = categories.render();
+    window.addEventListener("scroll", () => {
+      document.querySelector(".arrowDown").classList.add("displayNone");
+    });
   }
 }

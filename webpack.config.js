@@ -78,7 +78,7 @@ const getHtmlPlugins = (pages) =>
           (c) => !!c
         ),
       })
-  );
+  );  
 
 module.exports = ({ development }) => {
   const pages = getPages(srcPath, 1);
