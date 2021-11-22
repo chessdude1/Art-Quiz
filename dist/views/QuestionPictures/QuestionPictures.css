@@ -1,0 +1,23 @@
+.QuestionPicture__PicturesBlock {
+  display: grid !important;
+  gap: 10px;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ModalWindow__NextBtnPicture {
+  margin-top: 35px;
+  color: var(--white);
+  margin: 0 auto;
+  background-color: var(--vinous);
+  width: 150px;
+  height: 50px;
+}
+
+.QuestionPicture__correctAnswer {
+  background-color: rgb(37, 158, 26) !important;
+}
+
+.QuestionPicture__Wrong {
+  background-color: rgb(180, 74, 42) !important;
+}

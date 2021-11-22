@@ -1,0 +1,23 @@
+.CategoriesCardPictures {
+    max-width: 184px;
+    height: 300px;
+    background-color: var(--white);
+    margin-right: 15px;
+    margin-bottom: 30px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--vinous);
+  }
+  
+  .CategoriesCardPictures p {
+    padding-left: 10px;
+  }
+
+  .CategoriesCardPictures {
+    max-width: 184px;
+    height: 300px;
+    background-color: var(--white);
+    margin-right: 15px;
+    margin-bottom: 30px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--vinous);
+  }
