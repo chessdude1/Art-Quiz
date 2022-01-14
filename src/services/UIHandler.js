@@ -20,9 +20,9 @@ import { timeHandler } from "../views/Settings/Settings";
 import { nextCategoryBtn } from "../views/Questions/Questions";
 import { nextCategoryPicturesBtn } from "../views/QuestionPictures/QuestionPictures";
 
-export let full = document.querySelector(".body");
+export let body = document.querySelector(".body");
 
-full.addEventListener("click", (e) => {
+body.addEventListener("click", (e) => {
   e.preventDefault();
   getCategoryPicturesNumber(e.target);
   artistQuizHandler(e.target);

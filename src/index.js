@@ -2,15 +2,18 @@ import { startPageContent } from "./views/StartPage/StartPage";
 import Utils from "./services/Utils";
 import { categoriesContent } from "./views/Categories/Categories";
 import StartPageStyles from "./views/StartPage/StartPage.css";
-import { full } from "./services/UIHandler";
+import { body } from "./services/UIHandler";
 import { questionsContent } from "./views/Questions/Questions";
 import { scoreContent } from "./views/Score/Score";
 import { categoriesPicturesContent } from "./views/CategoriesPictures/CategoriesPictures";
 import { questionsPicturesContent } from "./views/QuestionPictures/QuestionPictures";
 import { settingsContent } from "./views/Settings/Settings";
+
+const WIPEANIMATIONTIME = 600;
+const FLASHANIMATIONTIME = 200;
+
 function pushInitialHash() {
   window.location = "/#/StartPage/";
-  // window.location = "/#/Categories";
 }
 
 export const router = () => {
@@ -43,10 +46,10 @@ function animationFlash() {
   main.classList.remove("containerShow");
   setTimeout(() => {
     document.body.classList.remove("bodyDisable");
-  }, 200);
+  }, FLASHANIMATIONTIME);
   setTimeout(() => {
     main.classList.add("containerShow");
-  }, 200);
+  }, FLASHANIMATIONTIME);
 }
 
 function animationWipe() {
@@ -56,15 +59,12 @@ function animationWipe() {
     .querySelector(".AnimationChangePage")
     .classList.add("AnimationChangePage__Show");
 
-  // document.body.classList.add("bodyDisable");
-
   setTimeout(() => {
     document
       .querySelector(".AnimationChangePage")
       .classList.remove("AnimationChangePage__Show");
     main.classList.add("containerShow");
-  }, 600);
-
+  }, WIPEANIMATIONTIME);
 }
 
 window.addEventListener("hashchange", router);

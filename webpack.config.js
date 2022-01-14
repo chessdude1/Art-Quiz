@@ -78,7 +78,7 @@ const getHtmlPlugins = (pages) =>
           (c) => !!c
         ),
       })
-  );  
+  );
 
 module.exports = ({ development }) => {
   const pages = getPages(srcPath, 1);
@@ -99,14 +99,6 @@ module.exports = ({ development }) => {
           test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp)$/i,
           type: "asset/resource",
         },
-        // {
-        //   test: /\.html$/i,
-        //   loader: "html-loader",
-        // },
-        // {
-        //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        //   type: 'asset/resource',
-        // },
         {
           test: /\.(?:mp3|wav|ogg|mp4)$/i,
           type: "asset/resource",

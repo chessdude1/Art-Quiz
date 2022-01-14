@@ -3,6 +3,10 @@
   --white: #ffffff;
   --vinous: #660033;
   --blue: #c0cffa;
+  --vinous-hover: #8d0049;
+  --vinous-shadow: #33001a;
+  --gray-shadow: #535353;
+  --beige: rgb(187, 174, 174);
 }
 
 body {
@@ -37,16 +41,14 @@ body {
   background-color: var(--blue);
   top: 0;
   position: absolute;
-  width: 100vw;
-  height: 140vh;
   z-index: 1;
   left: -500%;
   transition: left 1s ease-in-out;
+  width: 100vw;
+  height: 140vh;
 }
 
 .AnimationChangePage__Show {
   left: 0%;
   transition: left 0.5s ease-in-out;
 }
-
-/* test style */

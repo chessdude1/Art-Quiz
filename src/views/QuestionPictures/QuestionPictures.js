@@ -5,9 +5,9 @@ import { PicturesStore } from "../CategoriesPictures/CategoriesPictures";
 import { correctAnswerAudio } from "../Settings/Settings";
 import { wrongAnswerAudio } from "../Settings/Settings";
 import { showModalWindow } from "../Questions/Questions";
-import { timeGameStatus } from "../Settings/Settings";
 import { checkTimer } from "../Questions/Questions";
 import { timeOnAnswer } from "../Settings/Settings";
+
 class QuestionPictures {
   constructor(numberOfCategory) {
     this.correctQuestionCounter = 0;
@@ -15,6 +15,7 @@ class QuestionPictures {
     this.questionsState = [];
     this.questionsCounter = 0;
   }
+
   endCategoryHandler() {
     let correctQuestion = this.correctQuestionCounter;
     let message = "";
@@ -25,10 +26,12 @@ class QuestionPictures {
     } else {
       message = "I know you can do better";
     }
+
     PicturesStore[this.numberOfCategory][2] = true;
     PicturesStore[this.numberOfCategory - 1][1] = this.correctQuestionCounter; //устанавливаем для следующей карточки флаг, делающий ее цветной и записываем количество правильных ответов
-    this.questionsCounter = 0; //обнуление счетчиков
+    this.questionsCounter = 0;
     this.correctQuestionCounter = 0;
+
     return `        <div class="bodyModalWindowEndCategory">
     <div class="ModalWindowEndCategoryContainer ">
         <p class="EndCategory__Congratulations">
@@ -37,11 +40,9 @@ class QuestionPictures {
         <p class="EndCategory__Result">${correctQuestion} / 10</p>
 
         ${
-          message == "I know you can do better" ? (
-            ""
-          ) : (
-            '<img src="./images/ModalWindowEnd/Congratulations.svg"></img>'
-          )
+          message == "I know you can do better"
+            ? ""
+            : '<img src="./images/ModalWindowEnd/Congratulations.svg"></img>'
         }
         <div class="EndCategory_Controls">
             <button class="ModalWindowEndBtn ModalWindowEndBtn__NextBtn HomeBtn">HOME</button>
@@ -51,6 +52,7 @@ class QuestionPictures {
 
 </div>`;
   }
+
   generateRandomQuestions(currentQuestion) {
     let setOfWrongAnswers = new Set();
     for (
@@ -69,10 +71,11 @@ class QuestionPictures {
       return Math.random() - 0.5;
     });
   }
+
   createQuestions() {
-    let questionFragment = []; // буфер в который мы складываем сгенерированную разметку вопросов
+    let questionFragment = [];
     for (
-      let i = this.numberOfCategory * 10 - 9; //отсчет не с нуля, а с 1
+      let i = this.numberOfCategory * 10 - 9;
       i < this.numberOfCategory * 10 + 1;
       i++
     ) {
@@ -132,13 +135,13 @@ class QuestionPictures {
   </div>
   
   </div>`);
-      this.questionsState = questionFragment; // записываем актуальные вопросы из буфера в локальный стейт
+      this.questionsState = questionFragment;
     }
   }
+
   render() {
     this.createQuestions();
     if (this.questionsCounter == 10) {
-      //прошли последнюю карточку
       return this.endCategoryHandler();
     } else {
       return this.questionsState[this.questionsCounter];
@@ -187,7 +190,7 @@ export function checkCorrectPictureAnswer(elem) {
     arrOfResolvedCards.push(
       (questionsPictures.numberOfCategory - 1) * 10 +
         questionsPictures.questionsCounter
-    );
+    ); // in category 10 answers, first card number = 1, first question number =0, thats why questionsPictures.numberOfCategory - 1
     showModalWindow(true);
   } else if (elem.classList.contains("QuestionPictureWrong")) {
     wrongAnswerAudio.play();

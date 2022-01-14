@@ -1,16 +1,12 @@
 import settingsStyle from "./Settings.css";
 import correctAnswerSound from "../../audio/correct_answer.mp3";
 import wrongAnswerSound from "../../audio/wrong_answer.mp3";
-console.log(
-  "Имеется две разных анимации открытия страниц, и анимация отображения модального окна для результата ответа",
-  "В настройках неправильно отображается значение таймера, когда таймер изменяют в меньшую сторону",
-  "Все данные о настройках хранятся в local storage",
-  "В зависимоcти от количества правильных ответов, выводится разные результат категории "
-);
+
 class Settings {
   constructor(settingsData) {
     this.settingsData = settingsData;
   }
+
   render() {
     return `        <div class="Settings">
     <header class="headerLogo">
@@ -89,19 +85,17 @@ function getLocalStorageSettings() {
     correctAnswerAudio.volume = volume;
   }
   if (localStorage.getItem("volumeControlLocalStorage")) {
-    let volumePosition = localStorage.getItem("volumeControlLocalStorage");
-    volumeControl = volumePosition;
+    volumeControl = localStorage.getItem("volumeControlLocalStorage");
   }
   if (localStorage.getItem("timeBarOffsetStorage")) {
-    let TimeBarOffsetFromStorage = localStorage.getItem("timeBarOffsetStorage");
-    TimeBarOffset = TimeBarOffsetFromStorage;
+    TimeBarOffset = localStorage.getItem("timeBarOffsetStorage");
   }
 }
 
 window.addEventListener("beforeunload", setLocalStorageSettings);
 window.addEventListener("load", getLocalStorageSettings);
 
-export let timeGameStatus = true; // состояние, есть таймер или нет
+export let timeGameStatus = true; // flag, timer visibility
 export let timeOnAnswer = 30;
 export let correctAnswerAudio = new Audio(correctAnswerSound);
 export let wrongAnswerAudio = new Audio(wrongAnswerSound);
@@ -113,7 +107,7 @@ export function volumeHandler(elem) {
     correctAnswerAudio.volume = elem.offsetX / elem.target.clientWidth;
     volume = elem.offsetX / elem.target.clientWidth;
     wrongAnswerAudio.volume = elem.offsetX / elem.target.clientWidth;
-    volumeControl = elem.offsetX; // сохранение значения offset для local storage
+    volumeControl = elem.offsetX;
     document.querySelector(
       ".Settings__Progress"
     ).style.width = `${elem.offsetX}px`;
@@ -132,6 +126,9 @@ export function timeHandler(elem) {
       Math.round(((elem.offsetX / elem.target.clientWidth) * 30) / 5) * 5;
     document.querySelector(".ShowTimeOnQuestion").textContent =
       Math.round(((elem.offsetX / elem.target.clientWidth) * 30) / 5) * 5;
+    // Time on question 0-30. tis change with 5s step.
+    // after elem.offsetX / elem.target.clientWidth we get proc value from click on bar
+    // this value convert to 5s step value
     settingsContent = settings.render();
   }
 }
@@ -139,9 +136,7 @@ export function timeHandler(elem) {
 export function timeGameToggle(elem) {
   if (elem.classList.contains("Settings__checked")) {
     elem.classList.toggle("Settings__checked_disable");
-    timeGameStatus === true
-      ? (timeGameStatus = false)
-      : (timeGameStatus = true); // toggle флаг тайм-гейм
+    timeGameStatus = !timeGameStatus; // toggle flag game
   }
 }
 

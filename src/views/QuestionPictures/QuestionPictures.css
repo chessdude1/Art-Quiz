@@ -1,5 +1,5 @@
 .QuestionPicture__PicturesBlock {
-  display: grid !important;
+  display: grid;
   gap: 10px;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
@@ -15,9 +15,9 @@
 }
 
 .QuestionPicture__correctAnswer {
-  background-color: rgb(37, 158, 26) !important;
+  background-color: rgb(37, 158, 26);
 }
 
 .QuestionPicture__Wrong {
-  background-color: rgb(180, 74, 42) !important;
+  background-color: rgb(180, 74, 42);
 }

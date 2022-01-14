@@ -51,6 +51,7 @@
   max-width: 57.14%;
   margin: 0 auto;
 }
+
 .Settings__volumeContainer {
   max-width: 57.14%;
   margin: 0 auto;
@@ -68,8 +69,8 @@
 
 .Settings__TimePicture {
   padding-top: 75px;
-  margin: 0 auto;
   padding-bottom: 50px;
+  margin: 0 auto;
 }
 
 .SettingsTime__CheckBox {
@@ -80,12 +81,12 @@
 
 .Setting__VolumeTitle {
   padding-top: 60px;
+  padding-bottom: 55px;
   text-align: center;
   font-family: "Montserrat";
   font-size: 32px;
   font-weight: 900;
   color: var(--vinous);
-  padding-bottom: 55px;
 }
 
 .Settings__volumeControl {
@@ -102,12 +103,12 @@
 
 .Setting__TimeTitle {
   padding-top: 60px;
+  padding-bottom: 55px;
   text-align: center;
   font-family: "Montserrat";
   font-size: 32px;
   font-weight: 900;
   color: var(--vinous);
-  padding-bottom: 55px;
 }
 
 .SettingsFooter {

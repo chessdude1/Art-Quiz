@@ -78,8 +78,8 @@
   flex-wrap: wrap;
 }
 
-.CategoriesCardDisabled {
-  color: #00000013 !important;
+.CategoriesCardDisabled p {
+  color: #00000013;
 }
 
 .Img_CategoriesCardDisabled {
@@ -91,7 +91,7 @@
 }
 
 .displayNone {
-  display: none !important;
+  display: none;
 }
 
 @media (max-width: 1024px) {
@@ -133,10 +133,6 @@
       bottom: 0px;
       opacity: 0;
     }
-  }
-  .footerCategories {
-    /* background-color: var(--white);
-    width: 100%; */
   }
 }
 

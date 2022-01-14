@@ -4,14 +4,17 @@ export class Categories {
   constructor(CategoriesStore) {
     this.CategoriesStore = CategoriesStore;
   }
+
   generateCategoriesContent() {
-    let HTMLfragment = document.createElement("div"); //контейнер для того,чтобы сложить всю разметку, Вроде fragment но принимает HTML
+    let HTMLfragment = document.createElement("div");
     for (let i = 0; i < this.CategoriesStore.length; i++) {
       let currentCard = this.CategoriesStore[i];
       let cardStatus = "CategoriesCardDisabled";
       if (currentCard[2]) {
+        // card interface [1(serial number), 0(correct answers in category), true(status of card), "PORTRAIT" (name of card)]
         cardStatus = "CategoriesCardActive";
       }
+      
       let card = `<div class="CategoriesCard ${cardStatus}" CategoriesCardId='${
         currentCard[0]
       }'>
@@ -28,7 +31,7 @@ export class Categories {
             </div>`;
       HTMLfragment.insertAdjacentHTML("beforeEnd", card);
     }
-    return HTMLfragment.innerHTML; // конвертация элемента в разметку
+    return HTMLfragment.innerHTML; // convert elem to HTML
   }
 
   render() {
@@ -67,6 +70,7 @@ export class Categories {
 }
 
 export let ArtistsStore = [
+  // card interface [1(serial number), 0(correct answers in category), true(status of card), "PORTRAIT" (name of card)]
   [1, 0, true, "PORTRAIT"],
   [2, 0, false, "LANDSCAPE"],
   [3, 0, false, "STILL LIFE"],
@@ -78,8 +82,6 @@ export let ArtistsStore = [
   [9, 0, false, "KITSCH"],
   [10, 0, false, "MINIMALISM"],
 ];
-
-// первая цифра Номер карточки, вторая количество ответов, третье - состояние было нажато ил нет
 
 let categories = new Categories(ArtistsStore);
 export let categoriesContent = categories.render();

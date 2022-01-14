@@ -6,6 +6,9 @@ import { correctAnswerAudio } from "../Settings/Settings";
 import { wrongAnswerAudio } from "../Settings/Settings";
 import { timeGameStatus } from "../Settings/Settings";
 import { timeOnAnswer } from "../Settings/Settings";
+
+const TIMESHOWMODALWINDOW = 1000;
+const TIMERTICK = 1000;
 class Questions {
   constructor(numberOfCategory) {
     this.correctQuestionCounter = 0;
@@ -14,6 +17,7 @@ class Questions {
     this.questionsCounter = 0;
     this.stopBtnCounter = 0;
   }
+
   generateRandomQuestions(currentQuestion) {
     let setOfWrongAnswers = new Set();
     for (
@@ -43,11 +47,13 @@ class Questions {
     } else {
       message = "I know you can do better";
     }
+
     ArtistsStore[this.numberOfCategory][2] = true;
-    ArtistsStore[this.numberOfCategory - 1][1] = this.correctQuestionCounter; //устанавливаем для следующей карточки флаг, делающий ее цветной и записываем количество правильных ответов
-    this.questionsCounter = 0; //обнуление счетчиков
+    ArtistsStore[this.numberOfCategory - 1][1] = this.correctQuestionCounter; // make next card available, and save number of correct answers in category
+    this.questionsCounter = 0;
     this.correctQuestionCounter = 0;
     this.stopBtnCounter = 0;
+
     return `        <div class="bodyModalWindowEndCategory">
     <div class="ModalWindowEndCategoryContainer ">
         <p class="EndCategory__Congratulations">
@@ -56,11 +62,9 @@ class Questions {
         <p class="EndCategory__Result">${correctQuestion} / 10</p>
 
         ${
-          message == "I know you can do better" ? (
-            ""
-          ) : (
-            '<img src="./images/ModalWindowEnd/Congratulations.svg"></img>'
-          )
+          message == "I know you can do better"
+            ? ""
+            : '<img src="./images/ModalWindowEnd/Congratulations.svg"></img>'
         }
         <div class="EndCategory_Controls">
             <button class="ModalWindowEndBtn ModalWindowEndBtn__NextBtn HomeBtn">HOME</button>
@@ -70,14 +74,14 @@ class Questions {
 
 </div>`;
   }
+
   createQuestions() {
-    let questionFragment = []; // буфер в который мы складываем сгенерированную разметку вопросов
+    let questionFragment = []; // container for markdown
     for (
-      let i = this.numberOfCategory * 10 - 9; //отсчет не с нуля, а с 1
+      let i = this.numberOfCategory * 10 - 9; // question start from 1, not from 0
       i < this.numberOfCategory * 10 + 1;
       i++
     ) {
-      //если первая карточка вопросы 0 - 10, вторая 10-20
       let answers = this.generateRandomQuestions(i);
 
       questionFragment.push(` 
@@ -129,13 +133,14 @@ class Questions {
   </div>
 
 </div>`);
-      this.questionsState = questionFragment; // записываем актуальные вопросы из буфера в локальный стейт
+      this.questionsState = questionFragment; // save actual questions in local state
     }
   }
+
   render() {
     this.createQuestions();
-    if (this.questionsCounter == 10) {
-      //прошли последнюю карточку
+    if (this.questionsCounter === 10) {
+      //check on last question in category
       return this.endCategoryHandler();
     } else {
       return this.questionsState[this.questionsCounter];
@@ -201,7 +206,7 @@ export function showModalWindow(status) {
       document
         .querySelector(".bodyModalWindow")
         .classList.add("ModalWindowResult__Show");
-    }, 1000);
+    }, TIMESHOWMODALWINDOW);
   } else {
     setTimeout(() => {
       document
@@ -210,7 +215,7 @@ export function showModalWindow(status) {
       document
         .querySelector(".bodyModalWindow")
         .classList.add("ModalWindowResult__Show");
-    }, 1000);
+    }, TIMESHOWMODALWINDOW);
   }
 
   stopTimer = true;
@@ -238,10 +243,9 @@ function setTimer() {
     } else if (stopTimer) {
       timeOnAnswerCopy = "";
       return;
-    } else {
-      setTimeout(timer, 1000);
     }
-  }, 1000);
+    setTimeout(timer, TIMERTICK);
+  }, TIMERTICK);
 }
 
 let questions = new Questions(numberOfQuestion);

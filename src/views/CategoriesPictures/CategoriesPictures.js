@@ -6,13 +6,15 @@ class CategoriesPictures extends Categories {
     super(CategoriesStore);
   }
   generateCategoriesContentPictures() {
-    let HTMLfragment = document.createElement("div"); //контейнер для того,чтобы сложить всю разметку, Вроде fragment но принимает HTML
+    let HTMLfragment = document.createElement("div");
+
     for (let i = 0; i < this.CategoriesStore.length; i++) {
       let currentCard = this.CategoriesStore[i];
       let cardStatus = "CategoriesCardDisabled";
       if (currentCard[2]) {
         cardStatus = "CategoriesCardActive";
       }
+      
       let card = `<div class="CategoriesCardPictures ${cardStatus}" CategoriesCardId='${
         currentCard[0]
       }'>
@@ -28,11 +30,12 @@ class CategoriesPictures extends Categories {
                  }' src="./images/Categories/category_${
         currentCard[0] + 10
       }.svg"> 
-            </div>`; // + 10 так как картинки для второй категоррии хранятся в 10-20
+            </div>`;
       HTMLfragment.insertAdjacentHTML("beforeEnd", card);
     }
-    return HTMLfragment.innerHTML; // конвертация элемента в разметку
+    return HTMLfragment.innerHTML;
   }
+
   renderPictures() {
     return `            <div class="bodyCategoriesPage">
       <header class="headerLogo">
@@ -73,7 +76,6 @@ export let PicturesStore = [
   [9, 0, false, "KITSCH"],
   [10, 0, false, "MINIMALISM"],
 ];
-// первая цифра Номер карточки, вторая количество ответов, третье - состояние было нажато ил нет
 
 let categoriesPictures = new CategoriesPictures(PicturesStore);
 export let categoriesPicturesContent = categoriesPictures.renderPictures();
@@ -86,7 +88,10 @@ export function picturesQuizHandler(elem) {
 }
 
 export function firstQuestionPictureHandler(elem) {
-  if (elem.closest(".CategoriesCardPictures") &&  elem.closest(".CategoriesCardActive") ) {
+  if (
+    elem.closest(".CategoriesCardPictures") &&
+    elem.closest(".CategoriesCardActive")
+  ) {
     window.location = "/#/QuestionPictures/";
     categoriesPicturesContent = categoriesPictures.renderPictures();
   }

@@ -1,8 +1,8 @@
 .CategoriesHeader__HomeBtn p {
   padding-left: 10px;
   font-family: "Montserrat", sans-serif;
-  color: var(--white);
   font-size: 18px;
+  color: var(--white);
 }
 
 .CategoriesHeader__HomeBtn {
@@ -28,8 +28,7 @@
 }
 
 .ScorePageHeader__Category p {
-  padding: 4px;
-  padding-left: 10px;
+  padding: 4px 4px 4px 10px;
   font-family: "Montserrat", sans-serif;
   color: var(--white);
   font-size: 18px;
@@ -42,7 +41,7 @@
   align-items: center;
 }
 
-/* карточка */
+/* Card */
 
 .ScoreCard {
   max-width: 184px;
@@ -67,16 +66,18 @@
   align-items: center;
   max-width: 95%;
 }
+
 .ScoreCardImage {
   padding-top: 20px;
 }
+
 .ScoreCardsContainer {
   margin-top: 21px;
   display: flex;
   flex-wrap: wrap;
 }
 
-/* стили футера */
+/* footer */
 
 .footerScore {
   max-width: 235px;
@@ -127,6 +128,7 @@
   transition: all 0.5s;
   margin-left: -400px;
 }
+
 .ScoreCardResolved:hover .ScoreCard__Info {
   margin-left: 0;
 }

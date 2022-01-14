@@ -1,5 +1,5 @@
 import scoreStyles from "./Score.css";
-import allCards from "../../../image-data/images";
+import { images } from "../../../image-data/images";
 
 class Score {
   constructor(resolvedCards, allCards) {
@@ -7,18 +7,17 @@ class Score {
     this.allCards = allCards;
     this.currentPageScore = 0;
   }
+
   generateScoreCards() {
     let HTMLfragment = document.createElement("div");
     for (
       let i = this.currentPageScore * 10;
-      i < this.currentPageScore * 10 + 10;
+      i < this.currentPageScore * 10 + 10; //10 questions in card
       i++
     ) {
       let currentCard = this.allCards[i];
       let statusOfCard = "unresolved";
-      if (
-        this.resolvedCardsStore.indexOf(Number(this.allCards[i].imageNum)) != -1
-      ) {
+      if (this.resolvedCardsStore.includes(Number(this.allCards[i].imageNum))) {
         statusOfCard = "resolved";
       }
       let ScoreCard = `
@@ -46,8 +45,9 @@ class Score {
   </div>`;
       HTMLfragment.insertAdjacentHTML("beforeEnd", ScoreCard);
     }
-    return HTMLfragment.innerHTML; // конвертация элемента в разметку
+    return HTMLfragment.innerHTML;
   }
+
   render() {
     return `
     <div class="bodyScorePage">
@@ -83,9 +83,10 @@ class Score {
         `;
   }
 }
-export let arrOfResolvedCards = []; // Хранит в себе номера картин, которые были пройдены
 
-let score = new Score(arrOfResolvedCards, allCards);
+export let arrOfResolvedCards = []; // number of passed cards
+
+let score = new Score(arrOfResolvedCards, images);
 
 export let scoreContent = score.render();
 

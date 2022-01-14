@@ -5,8 +5,8 @@
 
 .QuestionHeader {
   font-family: "Montserrat", sans-serif;
-  color: var(--vinous);
   font-size: 30px;
+  color: var(--vinous);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +16,7 @@
 .QuestionWrapper {
   margin-top: 32px;
 }
+
 .QuestionTimer {
   position: relative;
   left: 10%;
@@ -66,8 +67,8 @@
   color: var(--vinous);
   font-size: 24px;
   font-family: "Montserrat", sans-serif;
-  padding-left: 25px;
   align-content: center;
+  padding-left: 25px;
 }
 
 .QuestionArtist__correctAnswer {
@@ -85,14 +86,10 @@
   position: absolute;
   left: -300%;
   transition: left 1s ease-in-out;
-  /* visibility: hidden; */
   width: 100%;
   height: 150%;
   background-color: rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  /* position: fixed; */
-  /* top: 0px;
-  left: 0px; */
 }
 
 .ModalWindowContainer {
@@ -140,8 +137,7 @@
 
 .ModalWindowResult__Show {
   visibility: unset;
-  /* bottom: 0px !important; */
-  left: 0% !important;
+  left: 0%;
 }
 
 .ModalWindow__NextBtn {
@@ -153,11 +149,11 @@
   height: 50px;
 }
 
-/* результат ответов на категорию */
+/* results of responses to the category */
 
 .bodyModalWindowEndCategory {
   width: 100%;
-  height: 3000px;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   overflow: hidden;
   position: fixed;
@@ -168,7 +164,6 @@
 .ModalWindowEndCategoryContainer {
   margin: 30px auto 0px auto;
   width: 582px;
-  /* height: 850px; */
   padding: 10px;
   background-color: var(--white);
   border-radius: 5px;
