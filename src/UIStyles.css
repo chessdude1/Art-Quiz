@@ -1,0 +1,123 @@
+.quizChoiceArtistsBtn {
+  cursor: pointer;
+}
+
+.quizChoicePicturesBtn {
+  cursor: pointer;
+}
+
+.settings {
+  cursor: pointer;
+  box-shadow: 0 5px 0 var(--vinous-shadow);
+  transition: 0.3s;
+}
+
+.settings:hover {
+  background: var(--vinous-hover);
+}
+
+.Settings__checked {
+  cursor: pointer;
+}
+
+.HomeBtn {
+  cursor: pointer;
+  box-shadow: 0 5px 0 var(--vinous-shadow);
+  transition: 0.3s;
+}
+
+.HomeBtn:hover {
+  background: var(--vinous-hover);
+}
+
+.CategoriesCardActive {
+  cursor: pointer;
+}
+
+.ScoreBtn {
+  cursor: pointer;
+  box-shadow: 0 5px 0 var(--vinous-shadow);
+  transition: 0.3s;
+}
+
+.ScoreBtn:hover {
+  background: var(--vinous-hover);
+}
+
+.QuestionPictureWrong {
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--gray-shadow);
+  transition: 0.3s;
+}
+.QuestionPictureWrong:hover {
+  background-color: var(--beige);
+}
+
+.QuestionPictureCorrect {
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--gray-shadow);
+  transition: 0.3s;
+}
+.QuestionPictureCorrect:hover {
+  background-color: var(--beige);
+}
+
+.QuestionArtistCorrect {
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--gray-shadow);
+  transition: 0.3s;
+}
+
+.QuestionArtistCorrect:hover {
+  background-color: var(--beige);
+}
+
+.QuestionArtistWrong {
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--gray-shadow);
+  transition: 0.3s;
+}
+
+.QuestionArtistWrong:hover {
+  background-color: var(--beige);
+}
+
+.QuestionPauseArtist_Btn {
+  cursor: pointer;
+}
+
+.ModalWindow__NextBtnPicture:hover {
+  background: var(--vinous-hover);
+}
+
+.ModalWindow__NextBtnPicture {
+  box-shadow: 0 5px 0 var(--vinous-shadow);
+  transition: 0.3s;
+}
+
+.ModalWindow__NextBtn:hover {
+  background: var(--vinous-hover);
+}
+
+.ModalWindow__NextBtn {
+  box-shadow: 0 5px 0 var(--vinous-shadow);
+  transition: 0.3s;
+}
+
+.ModalWindow_NextQuizBtn {
+  box-shadow: 0 5px 0 var(--vinous-shadow);
+  transition: 0.3s;
+}
+
+.ModalWindow_NextQuizBtn:hover {
+  background: var(--vinous-hover);
+}
+
+.ModalWindow_NextQuizPicturesBtn {
+  box-shadow: 0 5px 0 var(--vinous-shadow);
+  transition: 0.3s;
+}
+
+.ModalWindow_NextQuizPicturesBtn:hover {
+  background: var(--vinous-hover);
+}
